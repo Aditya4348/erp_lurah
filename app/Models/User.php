@@ -21,6 +21,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'nip',
+        'jabatan',
+        'phone',
+        'address',
+        'is_active',
+        'last_login_at',
+        'signature_path',
+        'certificate_status',
+        'certificate_expires_at',
+        'theme',
+        'language',
+        'notification_settings',
     ];
 
     /**
@@ -31,6 +44,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -43,6 +58,9 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login_at' => 'datetime',
+            'certificate_expires_at' => 'date',
+            'notification_settings' => 'json',
         ];
     }
 }

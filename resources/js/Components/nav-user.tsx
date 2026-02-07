@@ -27,7 +27,8 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar";
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
+import { Button } from "./ui/button";
 
 export function NavUser({
     user,
@@ -108,10 +109,12 @@ export function NavUser({
                             </Link>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            <LogOut />
-                            Log out
-                        </DropdownMenuItem>
+                        <button onClick={() => router.post(route("logout"))}>
+                            <DropdownMenuItem className="cursor-pointer">
+                                <LogOut />
+                                Log out
+                            </DropdownMenuItem>
+                        </button>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </SidebarMenuItem>

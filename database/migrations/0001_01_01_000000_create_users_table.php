@@ -12,11 +12,32 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            // 1. Auth Standard
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar')->nullable(); // Foto Profil
+
+            // 2. Data Pegawai (ERP Kelurahan)
+            $table->string('nip', 20)->unique()->nullable(); // NIP Pegawai
+            $table->string('jabatan')->nullable(); // Contoh: Kasi Pemerintahan
+            $table->string('phone', 20)->nullable();
+            $table->text('address')->nullable();
+            $table->boolean('is_active')->default(true); // Status Akun
+            $table->timestamp('last_login_at')->nullable(); // Login Terakhir
+
+            // 3. Tanda Tangan Digital
+            $table->string('signature_path')->nullable(); // Path gambar TTE
+            $table->string('certificate_status')->default('unverified'); // verified/unverified
+            $table->date('certificate_expires_at')->nullable();
+
+            // 4. Preferences
+            $table->string('theme')->default('light');
+            $table->string('language')->default('id');
+            $table->json('notification_settings')->nullable(); // Simpan setting notifikasi disini
+
             $table->rememberToken();
             $table->timestamps();
         });
