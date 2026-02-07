@@ -3,8 +3,22 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/Components/ui/avatar";
 import { Badge } from "@/Components/ui/badge";
 import { Card } from "@/Components/ui/card";
 import UserPreferences from "./user-preferences";
+import { usePage } from "@inertiajs/react";
+import { formatDateTime } from "@/lib/formatDateTime";
+import { PageProps } from "@/types";
 
 export default function ProfileSidebar() {
+    const { auth } = usePage<PageProps>().props;
+    const user = auth.user;
+
+    console.log(user);
+
+
+    if (!auth.user) {
+        return null;
+    }
+
+
     return (
         <div className="space-y-6">
             {/* Profile Card */}
@@ -20,18 +34,18 @@ export default function ProfileSidebar() {
 
                     <div className="flex items-center gap-2">
                         <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                            Ahmad Fauzi
+                            {user.name}
                         </h2>
-                        <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200">
-                            Operator
-                        </Badge>
+                        {/* <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200">
+                            {user.jabatan}
+                        </Badge> */}
                     </div>
 
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        Kasi Pemerintahan
+                        {user.email}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                        NIP: 1987654321
+                        NIP: {user.nip}
                     </p>
                 </div>
             </Card>
@@ -71,21 +85,21 @@ export default function ProfileSidebar() {
                 <div className="flex items-start gap-3">
                     <Mail className="h-5 w-5 text-gray-400 dark:text-gray-500 flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                        ahmad.fauzi@kelurahan.go.id
+                        {user.email}
                     </p>
                 </div>
 
                 <div className="flex items-start gap-3">
                     <Phone className="h-5 w-5 text-gray-400 dark:text-gray-500 flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                        0812-3456-7890
+                        {user.phone}
                     </p>
                 </div>
 
                 <div className="flex items-start gap-3">
                     <MapPin className="h-5 w-5 text-gray-400 dark:text-gray-500 flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Kelurahan Sukamaju
+                        {user.address}
                     </p>
                 </div>
             </Card>
@@ -102,7 +116,7 @@ export default function ProfileSidebar() {
                     />
                 </div>
                 <p className="text-xs text-gray-600 dark:text-gray-400">
-                    Aktif • Login terakhir 2 jam lalu
+                   {user.is_active ? "Aktif" : "Tidak Aktif"} • {formatDateTime(user.last_login_at)}
                 </p>
             </Card>
 
