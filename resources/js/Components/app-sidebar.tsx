@@ -10,6 +10,7 @@ import {
     Gift,
     Home,
     LifeBuoy,
+    LucideCalendarCheck,
     Map,
     MessageSquare,
     PieChart,
@@ -118,6 +119,11 @@ const data = {
                 { title: "Pengeluaran", url: "/keuangan/pengeluaran" },
                 { title: "Buku Kas", url: "/keuangan/kas" },
             ],
+        },
+        {
+            title: "Absensi",
+            url: "/absensi",
+            icon: LucideCalendarCheck,
         },
         {
             title: "Pegawai",

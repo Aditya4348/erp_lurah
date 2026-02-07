@@ -50,7 +50,7 @@ export default function Edit({
                             <TabsList className="h-auto bg-transparent p-0">
                                 <TabsTrigger
                                     value="overview"
-                                    className="rounded-none border-b-2 border-transparent px-0 py-4 font-medium  data-[state=active]:border-gray-900"
+                                    className="rounded-none border-b-2 border-transparent px-6 py-4 font-medium  data-[state=active]:border-gray-900"
                                 >
                                     Overview
                                 </TabsTrigger>
@@ -61,13 +61,7 @@ export default function Edit({
                                     My Task
                                 </TabsTrigger>
                                 <TabsTrigger
-                                    value="activities"
-                                    className="rounded-none border-b-2 border-transparent px-6 py-4 font-medium  data-[state=active]:border-gray-900 "
-                                >
-                                    Activities
-                                </TabsTrigger>
-                                <TabsTrigger
-                                    value="members"
+                                    value="documents"
                                     className="rounded-none border-b-2 border-transparent px-6 py-4 font-medium  data-[state=active]:border-gray-900 "
                                 >
                                     Documents
@@ -103,18 +97,10 @@ export default function Edit({
                         </div>
                     )}
 
-                    {activeTab === "activities" && (
+                    {activeTab === "documents" && (
                         <div className="text-center py-12">
                             <p className="">
-                                Activities content coming soon
-                            </p>
-                        </div>
-                    )}
-
-                    {activeTab === "members" && (
-                        <div className="text-center py-12">
-                            <p className="">
-                                Members content coming soon
+                                Documents content coming soon
                             </p>
                         </div>
                     )}
